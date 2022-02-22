@@ -1,4 +1,4 @@
-package org.generation.QuickTrip.products;
+package org.generation.QuickTrip.tour;
 
 import java.util.ArrayList;
 

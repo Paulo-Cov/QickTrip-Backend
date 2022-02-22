@@ -1,4 +1,4 @@
-package org.generation.QuickTrip.products;
+package org.generation.QuickTrip.tour;
 
 public class tour {
 	private int id;
