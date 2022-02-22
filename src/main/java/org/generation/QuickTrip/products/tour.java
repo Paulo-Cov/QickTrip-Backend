@@ -10,7 +10,7 @@ public class tour {
     private String about;
     private static int total=0;
     
-	public tour(int id, String name, String location, String category, String image, double price, String about) {
+	public tour(String name, String location, String category, String image, double price, String about) {
 		super();
 		total ++; 
 		this.id = total;
