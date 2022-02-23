@@ -17,7 +17,7 @@ public class user {
 			boolean admin, String date) {
 		super();
 		total ++; 
-		this.id = id;
+		this.id = total;
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
@@ -76,11 +76,11 @@ public class user {
 		this.lastName = lastName;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

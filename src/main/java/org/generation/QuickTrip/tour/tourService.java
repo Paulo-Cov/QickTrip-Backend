@@ -10,7 +10,21 @@ public class tourService {
 
     public tourService() {
 		
-        lista.add(new tour("Discover the historic center", "CDMX", "Culture", "../assets/img/items/bellas-artes.jpg", 500.00, "Get to know the history of many of the most famous places such as the Palacio de Bellas Artes, Zocalo, Chinatown, and the cathedral, but we will also visit less touristy spots like old colonial houses and traditional candy stores, and get to know traditions that are still alive today. Plus, a perfect snack-stop and many, many fun facts."));
+        lista.add(new tour("Discover the historic center", 
+		"CDMX", 
+		"Culture", 
+		"../assets/img/items/bellas-artes.jpg", 
+		500.00, 
+		"Get to know the history of many of the most famous places such as the Palacio de Bellas Artes, Zocalo, Chinatown, and the cathedral, but we will also visit less touristy spots like old colonial houses and traditional candy stores, and get to know traditions that are still alive today. Plus, a perfect snack-stop and many, many fun facts."
+		));
+
+		lista.add(new tour("Teotihuacan Ballon Ride", 
+		"CDMX", 
+		"Culture", 
+		"https://ichef.bbci.co.uk/news/800/cpsprodpb/BEE3/production/_118676884_gettyimages-73656849.jpg.webp", 
+		3000.00, 
+		"This experience is your great opportunity to get to know Teotihuacan from another perspective, out of the ordinary. Fly in a balloon and let the wind take you on an unforgettable journey, witnessing the first contact between man and heaven."
+		));
 		
 	}
 

@@ -24,13 +24,13 @@ public class tourController {
     @GetMapping
     public List<tour> getTour(){
         return tService.getTours();
-    }//getTour
+    }//getTours
 
     @GetMapping(path = "{tourId}")
-    public tour getTours(@PathVariable("tourId") Long tourId){
+    public tour getTour(@PathVariable("tourId") Long tourId){
 		return tService.getTour(tourId);
 		
-	}//getTours
+	}//getTour
     
     @DeleteMapping(path="{tourId}")
 	public void deleteTour(@PathVariable("tourId") Long tourId) {
