@@ -40,6 +40,7 @@ public class tourController {
 	@PostMapping
 	public void addTour() {
 		
+		
 	}//addTour
 	
 	@PutMapping
