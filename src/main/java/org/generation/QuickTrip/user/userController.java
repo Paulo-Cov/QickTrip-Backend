@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,17 +31,18 @@ public class userController {
     public user getUser(@PathVariable("userId") Long userId){
 		return uService.getUser(userId);
 		
-	}//getusers
+	}//getUsers
 
 	@DeleteMapping(path="{userId}")
 	public void deleteTour(@PathVariable("userId") Long userId) {
-		uService.deleteuser(userId);
-	}//deleteTour
+		uService.deleteUser(userId);
+	}//deleteUser
 	
 	@PostMapping
-	public void addUser() {
+	public void addUser(@RequestBody user user) {
+		uService.addUser(user);
 		
-	}//addTour
+	}//addUser
 	
 	@PutMapping
 	public void updateUser() {

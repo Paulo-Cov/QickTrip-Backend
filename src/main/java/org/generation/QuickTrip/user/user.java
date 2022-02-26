@@ -1,7 +1,19 @@
 package org.generation.QuickTrip.user;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="user")
 public class user {
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id", unique = true, nullable = false)
+	private Long id;
     private String userName;
     private String email;
     private String password;
@@ -10,14 +22,17 @@ public class user {
 	private String phone;
     private boolean admin;
     private String date;
-    @SuppressWarnings("unused")
-	private static int total=0;
+    //private static int total=0;
+    
+    public user() {
+		// TODO Auto-generated constructor stub
+	}
     
 	public user(String userName, String email, String password, String firstName, String lastName, String phone,
 			boolean admin, String date) {
 		super();
-		total ++; 
-		this.id = total;
+		//total ++; 
+		//this.id = total;
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
@@ -28,11 +43,11 @@ public class user {
 		this.date = date;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
