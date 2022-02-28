@@ -14,11 +14,11 @@ public class user {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
-    private String userName;
+    private String user_name;
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
+    private String first_name;
+    private String last_name;
 	private String phone;
     private boolean admin;
     private String date;
@@ -28,16 +28,17 @@ public class user {
 		// TODO Auto-generated constructor stub
 	}
     
-	public user(String userName, String email, String password, String firstName, String lastName, String phone,
+	public user(Long id, String user_name, String email, String password, String first_name, String last_name, String phone,
 			boolean admin, String date) {
 		super();
 		//total ++; 
 		//this.id = total;
-		this.userName = userName;
+		this.id = id;
+		this.user_name = user_name;
 		this.email = email;
 		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.phone = phone;
 		this.admin = admin;
 		this.date = date;
@@ -51,12 +52,13 @@ public class user {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getEmail() {
@@ -75,20 +77,22 @@ public class user {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getLastName() {
-		return lastName;
+
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getPhone() {
@@ -117,8 +121,8 @@ public class user {
 
 	@Override
 	public String toString() {
-		return "user [id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password
-				+ ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", admin=" + admin
+		return "user [id=" + id + ", userName=" + user_name + ", email=" + email + ", password=" + password
+				+ ", firstName=" + first_name + ", lastName=" + last_name + ", phone=" + phone + ", admin=" + admin
 				+ ", date=" + date + "]";
 	}
     

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class userService {
 	private final userRepository  userRep;
@@ -35,12 +36,31 @@ public class userService {
 		}// deleteuser
 		
 		public void addUser(user use) {
-			Optional<user> userByName = userRep.findByUserName(use.getUserName());
+			Optional<user> userByName = userRep.findByuser_name(use.getUser_name());
 			if(userByName.isPresent()) {
-				throw new IllegalStateException("El Usuario con el nombre [ "+use.getUserName()+" ] ya existe.");
+				throw new IllegalStateException("El Usuario con el nombre [ "+use.getUser_name()+" ] ya existe.");
 			}else {
 				userRep.save(use);
 			}
 			
-		}
+		}//adduser
+		
+		public void updateuser(Long userId, String user_name, String email, String password, String first_name, String last_name, String phone, boolean admin, String date) {
+			if (userRep.existsById(userId)) { 
+				user p = userRep.getById(userId);
+				if (user_name != null) p.setUser_name(user_name); 
+				if (email != null) p.setEmail(email);
+				if (password != null) p.setPassword(password);
+				if (first_name != null) p.setFirst_name(first_name);
+				if (last_name != null) p.setLast_name(last_name);
+				if (phone != null) p.setPhone(phone);
+				//if (admin != null) p.setAdmin(admin);
+				if (date !=null) p.setDate(date);
+				userRep.save(p);
+			}else {
+				System.out.println("No existe el id "+userId);
+				System.err.println("*No existe el id "+userId);
+			}// if 		
+			
+		} // updateProducto
 }

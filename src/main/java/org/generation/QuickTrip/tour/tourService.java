@@ -1,54 +1,68 @@
 package org.generation.QuickTrip.tour;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class tourService {
-    public final ArrayList<tour> lista = new ArrayList<tour>();
+	private final tourRepository tourRep;
+	
+	@Autowired
+	public tourService(tourRepository tourRep) {
+		super();
+		this.tourRep = tourRep;
+	}//constructor
+	
+	public List<tour> getTours(){
+		return tourRep.findAll();
+	}//get tours
 
-    public tourService() {
+	
+	public tour getTour(Long tourId) {
+		return tourRep.findById(tourId).orElseThrow(() -> new IllegalStateException("El tour con el id "+ tourId +" no existe."));
+
+	}//get tour
+
+	public void deleteTour(Long tourId) {
+		if (tourRep.existsById(tourId)) {
+			tourRep.deleteById(tourId);
+		}//
 		
-        lista.add(new tour("Discover the historic center", 
-		"CDMX", 
-		"Culture", 
-		"../assets/img/items/bellas-artes.jpg", 
-		500.00, 
-		"Get to know the history of many of the most famous places such as the Palacio de Bellas Artes, Zocalo, Chinatown, and the cathedral, but we will also visit less touristy spots like old colonial houses and traditional candy stores, and get to know traditions that are still alive today. Plus, a perfect snack-stop and many, many fun facts."
-		));
-
-		lista.add(new tour("Teotihuacan Ballon Ride", 
-		"CDMX", 
-		"Culture", 
-		"https://ichef.bbci.co.uk/news/800/cpsprodpb/BEE3/production/_118676884_gettyimages-73656849.jpg.webp", 
-		3000.00, 
-		"This experience is your great opportunity to get to know Teotihuacan from another perspective, out of the ordinary. Fly in a balloon and let the wind take you on an unforgettable journey, witnessing the first contact between man and heaven."
-		));
+	}// delete tour
+	
+	public void addTour(tour tou) {
+		Optional<tour> userByName = tourRep.findByName(tou.getName());
+		if(userByName.isPresent()) {
+			throw new IllegalStateException("El Usuario con el nombre [ "+tou.getName()+" ] ya existe.");
+		}else {
+			tourRep.save(tou);
+		}
 		
-	}
+	}//adduser
+	
+	
+	public void updateTour(Long tourId, String name, String location, String category, String image, Long price, String about, String city, double rating, int reviews_num) {
+		if (tourRep.existsById(tourId)) { 
+			tour t = tourRep.getById(tourId);
+			if (name != null) t.setName(name); 
+			if (location != null) t.setLocation(location);
+			if (category != null) t.setCategory(category);
+			if (image != null) t.setImage(image);
+			if (price != 0) t.setPrice(price);
+			if (about != null) t.setAbout(about);
+			if (city != null) t.setCity(city);
+			if (rating != 0) t.setRating(rating);
+			if (reviews_num != 0) t.setReviews_num(reviews_num);
+			tourRep.save(t);
+		}else {
+			System.out.println("No existe el id "+tourId);
+			System.err.println("*No existe el id "+tourId);
+		}// if 		
+		
+	} // update tour
 
-    public ArrayList<tour> getTours(){
-		return lista;
-	}//getTours
-
-    public tour getTour(Long tourId) {
-		tour tmpTour = null;
-		for (tour t : lista) {
-			if(t.getId()== tourId){
-				tmpTour = t;
-			}//if
-		}//for each
-		return tmpTour;
-	}//getTour
-
-    public void deleteTour(Long tourId) {
-		for (tour t : lista) {
-			if(t.getId()== tourId){
-				lista.remove(t);
-				break;
-			}//if
-		}//for each
-	}// deleteTour
-
+	
 }
