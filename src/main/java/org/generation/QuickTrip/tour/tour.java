@@ -18,6 +18,8 @@ public class tour {
     private String location;
     private String category;
     private String image;
+    private String image_two;
+    private String image_three;
     private Long price;
     private String about;
     private String city;
@@ -29,7 +31,7 @@ public class tour {
     	
     }//constructor vacio
     
-    public tour(Long id, String name, String location, String category, String image, Long price, String about,
+    public tour(Long id, String name, String location, String category, String image, String image_two, String image_three, Long price, String about,
 			String city, double rating, int reviews_num) {
 		super();
 		this.id = id;
@@ -37,6 +39,8 @@ public class tour {
 		this.location = location;
 		this.category = category;
 		this.image = image;
+		this.image_two = image_two;
+		this.image_three = image_three;
 		this.price = price;
 		this.about = about;
 		this.city = city;
@@ -83,6 +87,23 @@ public class tour {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+
+	public String getImage_two() {
+		return image_two;
+	}
+
+	public void setImage_two(String image_two) {
+		this.image_two = image_two;
+	}
+
+	public String getImage_three() {
+		return image_three;
+	}
+
+	public void setImage_three(String image_three) {
+		this.image_three = image_three;
+	}
 
 	public Long getPrice() {
 		return price;
@@ -127,11 +148,9 @@ public class tour {
 	@Override
 	public String toString() {
 		return "tour [id=" + id + ", name=" + name + ", location=" + location + ", category=" + category + ", image="
-				+ image + ", price=" + price + ", about=" + about + ", city=" + city + ", rating=" + rating
-				+ ", reviews_num=" + reviews_num + "]";
+				+ image + ", image_two=" + image_two + ", image_three=" + image_three + ", price=" + price + ", about="
+				+ about + ", city=" + city + ", rating=" + rating + ", reviews_num=" + reviews_num + "]";
 	}
-    
-    
-   
+
     
 }

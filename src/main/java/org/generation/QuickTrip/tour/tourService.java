@@ -44,13 +44,15 @@ public class tourService {
 	}//adduser
 	
 	
-	public void updateTour(Long tourId, String name, String location, String category, String image, Long price, String about, String city, double rating, int reviews_num) {
+	public void updateTour(Long tourId, String name, String location, String category, String image, String image_two, String image_three, Long price, String about, String city, double rating, int reviews_num) {
 		if (tourRep.existsById(tourId)) { 
 			tour t = tourRep.getById(tourId);
 			if (name != null) t.setName(name); 
 			if (location != null) t.setLocation(location);
 			if (category != null) t.setCategory(category);
 			if (image != null) t.setImage(image);
+			if (image_two != null) t.setImage_two(image_two);
+			if (image_three != null) t.setImage_three(image_three);
 			if (price != 0) t.setPrice(price);
 			if (about != null) t.setAbout(about);
 			if (city != null) t.setCity(city);

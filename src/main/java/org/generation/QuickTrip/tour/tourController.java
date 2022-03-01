@@ -52,13 +52,14 @@ public class tourController {
     		@RequestParam(required=false) String location,
     		@RequestParam(required=false) String category,
     		@RequestParam(required=false) String image,
+    		@RequestParam(required=false) String image_two,
+    		@RequestParam(required=false) String image_three,
     		@RequestParam(required=false) Long price,
     		@RequestParam(required=false) String about,
     		@RequestParam(required=false) String city,
     		@RequestParam(required=false) double rating,
     		@RequestParam(required=false) int reviews_num) {
-		tService.updateTour(tourId, name, location,
-				category, image, price, about, city, rating, reviews_num);
+		tService.updateTour(tourId, name, location, category, image, image_two, image_three, price, about, city, rating, reviews_num);
 		
 	}
 
