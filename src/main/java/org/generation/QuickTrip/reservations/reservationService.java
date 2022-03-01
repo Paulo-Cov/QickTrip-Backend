@@ -1,42 +1,53 @@
 package org.generation.QuickTrip.reservations;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 
 public class reservationService {
-    public final ArrayList<reservation> lista = new ArrayList<reservation>();
     
-    public reservationService(){
+	private final reservationRepository reservationRep;
+	
+	@Autowired
+    public reservationService(reservationRepository reservationRep) {
+		super();
+		this.reservationRep = reservationRep;
+	}
 
-        lista.add(new reservation(3, "02mar22", 600.5));
-
-        lista.add(new reservation(2, "13abr22", 1000));
-
-        lista.add(new reservation(1, "2abr22", 400));
-    }
-
-    public ArrayList<reservation> getReservations(){
-        return lista;
+	public List<reservation> getReservations(){
+        return reservationRep.findAll();
     }//getReservations
 
     public reservation getReservation(Long reservationId){
-        reservation tmpReservation = null;
-		for (reservation r : lista) {
-			if(r.getId() == reservationId){
-				tmpReservation = r;
-			}//if
-		}//for each
-		return tmpReservation;
+        return reservationRep.findById(reservationId).orElseThrow (()-> new IllegalStateException("There is not a reservation with the id: " + reservationId ) );
 	}//getTour
 
     public void deleteReservation(Long reservationId) {
-		for (reservation r : lista) {
-			if(r.getId() == reservationId){
-				lista.remove(r);
-                break;
-			}//if
-		}//for eachfor each
-	}
+    	if (reservationRep.existsById(reservationId)) {
+    		reservationRep.deleteById(reservationId);
+		}		
+	}//deleteReservation
+    
+    public void addReservation(reservation reservation) {
+		Optional<reservation> reservationByDate = reservationRep.findByDate(reservation.getDate());
+		if(reservationByDate.isPresent()) {
+			throw new IllegalStateException("Your alrready have a reservation for: " + reservation.getDate());
+		}
+		reservationRep.save(reservation);
+	}//addReservation
+    
+
+	public void updateReservation(Long reservationId, String date, int numReservations) {
+		if(reservationRep.existsById(reservationId)) {
+			reservation res = reservationRep.getById(reservationId);
+			if (date != null) res.setDate(date);
+			if (numReservations != 0) res.setNumReservations(numReservations);
+		}
+		
+	}//updateReservation
+
 }
