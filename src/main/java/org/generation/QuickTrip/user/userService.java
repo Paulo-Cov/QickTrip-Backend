@@ -2,7 +2,7 @@ package org.generation.QuickTrip.user;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.generation.QuickTrip.utils.SHAUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +62,18 @@ public class userService {
 				System.err.println("*No existe el id "+userId);
 			}// if 		
 			
-		} // updateProducto
+		} // updateuser
+
+		public boolean login(String user_name, String password) {
+			boolean res =false;
+			Optional<user> u = userRep.findByuser_name(user_name);
+			if(u.isPresent()) {
+				System.out.println("Password SHA: " + SHAUtil.createHash(password));
+					if (SHAUtil.verifyHash(password, u.get().getPassword())) {
+						res=true;
+					}
+			
+		}
+			return res;
+		}//login
 }
