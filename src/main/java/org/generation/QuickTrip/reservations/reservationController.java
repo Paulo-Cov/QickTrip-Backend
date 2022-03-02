@@ -27,7 +27,7 @@ public class reservationController {
     }//constructor
 
     @GetMapping
-    public List<reservation> getReservation(){
+    public List<reservation> getReservations(){
         return resService.getReservations();
     }
 
@@ -51,8 +51,9 @@ public class reservationController {
     @PutMapping(path = "{reservationId}")
     public void updateReservation(@PathVariable("reservationId") Long reservationId,
     		@RequestParam(required=false)String date,
-    		@RequestParam(required=false)int numReservations){
-    	resService.updateReservation(reservationId, date, numReservations);
+    		@RequestParam(required=false)Integer num_reservations,
+            @RequestParam(required=false)Double total_price){
+    	resService.updateReservation(reservationId, date, num_reservations, total_price);
     }//updateReservation
 
     

@@ -23,8 +23,8 @@ public class tour {
     private Long price;
     private String about;
     private String city;
-    private double rating;
-    private int reviews_num;
+    private Long rating;
+    private Long reviews_num;
 	
     
     public tour() {
@@ -32,7 +32,7 @@ public class tour {
     }//constructor vacio
     
     public tour(Long id, String name, String location, String category, String image, String image_two, String image_three, Long price, String about,
-			String city, double rating, int reviews_num) {
+			String city, Long rating, Long reviews_num) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -129,19 +129,19 @@ public class tour {
 		this.city = city;
 	}
 
-	public double getRating() {
+	public Long getRating() {
 		return rating;
 	}
 
-	public void setRating(double rating) {
+	public void setRating(Long rating) {
 		this.rating = rating;
 	}
 
-	public int getReviews_num() {
+	public Long getReviews_num() {
 		return reviews_num;
 	}
 
-	public void setReviews_num(int reviews_num) {
+	public void setReviews_num(Long reviews_num) {
 		this.reviews_num = reviews_num;
 	}
 

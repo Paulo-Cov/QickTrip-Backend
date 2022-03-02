@@ -44,7 +44,7 @@ public class tourService {
 	}//adduser
 	
 	
-	public void updateTour(Long tourId, String name, String location, String category, String image, String image_two, String image_three, Long price, String about, String city, double rating, int reviews_num) {
+	public void updateTour(Long tourId, String name, String location, String category, String image, String image_two, String image_three, Long price, String about, String city, Long rating, Long reviews_num) {
 		if (tourRep.existsById(tourId)) { 
 			tour t = tourRep.getById(tourId);
 			if (name != null) t.setName(name); 
@@ -53,11 +53,11 @@ public class tourService {
 			if (image != null) t.setImage(image);
 			if (image_two != null) t.setImage_two(image_two);
 			if (image_three != null) t.setImage_three(image_three);
-			if (price != 0) t.setPrice(price);
+			if (price != null) t.setPrice(price);
 			if (about != null) t.setAbout(about);
 			if (city != null) t.setCity(city);
-			if (rating != 0) t.setRating(rating);
-			if (reviews_num != 0) t.setReviews_num(reviews_num);
+			if (rating != null) t.setRating(rating);
+			if (reviews_num != null) t.setReviews_num(reviews_num);
 			tourRep.save(t);
 		}else {
 			System.out.println("No existe el id "+tourId);

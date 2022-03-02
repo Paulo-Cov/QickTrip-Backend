@@ -57,8 +57,8 @@ public class tourController {
     		@RequestParam(required=false) Long price,
     		@RequestParam(required=false) String about,
     		@RequestParam(required=false) String city,
-    		@RequestParam(required=false) double rating,
-    		@RequestParam(required=false) int reviews_num) {
+    		@RequestParam(required=false) Long rating,
+    		@RequestParam(required=false) Long reviews_num) {
 		tService.updateTour(tourId, name, location, category, image, image_two, image_three, price, about, city, rating, reviews_num);
 		
 	}

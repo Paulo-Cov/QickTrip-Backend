@@ -8,25 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tour")
+@Table(name="reservation")
 public class reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", unique = true, nullable = false)
     private Long id;
-    private int numReservations;
+    private Integer num_reservations;
     private String date;
-    private double totalPrice;
+    private Double total_price;
     
     public reservation() {
     	
     }//constructor vacio
     
-	public reservation(int numReservations, String date, double totalPrice) {
+	public reservation(Integer num_reservations, String date, Double total_price) {
 		super();
-		this.numReservations = numReservations;
+		this.num_reservations = num_reservations;
 		this.date = date;
-		this.totalPrice = totalPrice;
+		this.total_price = total_price;
 	}
 
 	public Long getId() {
@@ -37,12 +37,12 @@ public class reservation {
 		this.id = id;
 	}
 
-	public int getNumReservations() {
-		return numReservations;
+	public Integer getNum_reservations() {
+		return num_reservations;
 	}
 
-	public void setNumReservations(int numReservations) {
-		this.numReservations = numReservations;
+	public void setNum_reservations(Integer num_reservations) {
+		this.num_reservations = num_reservations;
 	}
 
 	public String getDate() {
@@ -53,12 +53,12 @@ public class reservation {
 		this.date = date;
 	}
 
-	public double getTotalPrice() {
-		return totalPrice;
+	public Double getTotal_price() {
+		return total_price;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotal_price(Double total_price) {
+		this.total_price = total_price;
 	}
     
     

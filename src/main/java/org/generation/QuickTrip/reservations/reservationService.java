@@ -41,11 +41,13 @@ public class reservationService {
 	}//addReservation
     
 
-	public void updateReservation(Long reservationId, String date, int numReservations) {
+	public void updateReservation(Long reservationId, String date, Integer num_reservations, Double total_price) {
 		if(reservationRep.existsById(reservationId)) {
 			reservation res = reservationRep.getById(reservationId);
 			if (date != null) res.setDate(date);
-			if (numReservations != 0) res.setNumReservations(numReservations);
+			if (num_reservations != null) res.setNum_reservations(num_reservations);
+			if (total_price != null) res.setTotal_price(total_price);
+			reservationRep.save(res);
 		}
 		
 	}//updateReservation

@@ -40,6 +40,7 @@ public class userService {
 			if(userByName.isPresent()) {
 				throw new IllegalStateException("El Usuario con el nombre [ "+use.getUser_name()+" ] ya existe.");
 			}else {
+				use.setPassword( SHAUtil.createHash(use.getPassword()) );
 				userRep.save(use);
 			}
 			
