@@ -17,17 +17,41 @@ public class reservation {
     private Integer num_reservations;
     private String date;
     private Double total_price;
+    private String user_id;
+    private String tour_id;
     
-    public reservation() {
-    	
-    }//constructor vacio
-    
-	public reservation(Integer num_reservations, String date, Double total_price) {
+    public reservation(Long id, Integer num_reservations, String date, Double total_price, String user_id,
+			String tour_id) {
 		super();
+		this.id = id;
 		this.num_reservations = num_reservations;
 		this.date = date;
 		this.total_price = total_price;
+		this.user_id = user_id;
+		this.tour_id = tour_id;
 	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getTour_id() {
+		return tour_id;
+	}
+
+	public void setTour_id(String tour_id) {
+		this.tour_id = tour_id;
+	}
+
+	public reservation() {
+    	
+    }//constructor vacio
+    
+	
 
 	public Long getId() {
 		return id;
